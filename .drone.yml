@@ -1,0 +1,17 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      context: .
+      dockerfile: Dockerfile
+      repo: xianwei2022/go-oss-app
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+      tags:
+        - latest
